@@ -1,0 +1,17 @@
+services:
+  database:
+    image: mysql:latest
+    container_name: database_mig
+    restart: on-failure:2
+    hostname: database
+    environment:
+      - MYSQL_ROOT_PASSWORD=ThePassword
+      - MYSQL_ROOT=root
+      - MYSQL_MIGRATION_VERSION=1
+    volumes:
+      - database-data:/var/lib/mysql
+      - ./database:/usr/local/bin
+
+volumes:
+  database-data:
+  
